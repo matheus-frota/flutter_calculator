@@ -1,30 +1,39 @@
 import 'package:flutter/material.dart';
 
-//TODO - 4: Crie um novo Container, que receberá um column, que por sua vez receberá vários rows,
-// que por sua vez receberão vários raisedbuttons para criar os botões da nossa calculadora. A
-// calculadora deve ficar com o visual similar ao da imagem apresentada em:
-// https://drive.google.com/file/d/1fuKl3cdlr1J-PsLLmKtStvgeHiaeahO6/view?usp=sharing.
-// Dicas: pesquisem no flutter.dev pelas classes/widgets: 'Expanded' e 'RaisedButton';
-// As cores podem ser diferentes para os botões, fica a seu critério, porém, a estrutura
-// dos botões deve ser a mesma apresentada na imagem.
+void main(){
+  runApp(MyApp());
+}
 
-void main() {
-  runApp(MaterialApp(
-    home: Scaffold(
-      backgroundColor: Colors.black12,
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(home: MyCalc());
+  }
+}
+
+class MyCalc extends StatelessWidget {
+  const MyCalc({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Center(child: Text('CALCULADORA')),
         backgroundColor: Colors.black,
       ),
       body: Column(
         children: [
-          Container(
-            color: Colors.white,
-            margin: EdgeInsets.all(15),
-            width: 400,
-            height: 120,
-            // child: Center(child: Text('Visor', style: TextStyle(fontSize: 50),)),
-            child: TextField(),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(8, 150, 8, 16),
+            child: TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: '0',
+              ),
+            ),
           ),
           Container(
             child: Column(
@@ -43,12 +52,12 @@ void main() {
                             child: TextButton(
                               onPressed: () {},
                               child: Text(
-                                'C',
+                                'AC',
                                 style: TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.w500),
                               ),
                               style: TextButton.styleFrom(
-                              padding: EdgeInsets.all(25)
+                                  padding: EdgeInsets.all(25)
                               ),
 
                             ))),
@@ -63,7 +72,7 @@ void main() {
                             child: TextButton(
                               onPressed: () {},
                               child: Text(
-                                'DEL',
+                                '+/-',
                                 style: TextStyle(
                                     fontSize:15, fontWeight: FontWeight.w500),
                               ),
@@ -188,7 +197,7 @@ void main() {
                             child: TextButton(
                               onPressed: () {},
                               child: Text(
-                                '*',
+                                'x',
                                 style: TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.w500),
                               ),
@@ -273,7 +282,7 @@ void main() {
                             child: TextButton(
                               onPressed: () {},
                               child: Text(
-                                '+',
+                                '-',
                                 style: TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.w500),
                               ),
@@ -358,7 +367,7 @@ void main() {
                             child: TextButton(
                               onPressed: () {},
                               child: Text(
-                                '-',
+                                '+',
                                 style: TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.w500),
                               ),
@@ -403,7 +412,7 @@ void main() {
                             child: TextButton(
                               onPressed: () {},
                               child: Text(
-                                '.',
+                                ',',
                                 style: TextStyle(
                                     fontSize:15, fontWeight: FontWeight.w500),
                               ),
@@ -439,6 +448,6 @@ void main() {
           )
         ],
       ),
-    ),
-  ));
+    );
+  }
 }
