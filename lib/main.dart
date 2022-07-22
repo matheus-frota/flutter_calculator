@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+var numero = ValueNotifier(0);
+
 void main(){
   runApp(MyApp());
 }
@@ -28,11 +30,22 @@ class MyCalc extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(8, 150, 8, 16),
-            child: TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: '0',
-              ),
+            child: ValueListenableBuilder<int>(
+              valueListenable: numero,
+              builder: (context, level, child){
+                return TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: numero.value.toString(),
+                  ),
+                );
+              },
+              // child: TextField(
+              //   decoration: InputDecoration(
+              //     border: OutlineInputBorder(),
+              //     labelText: '0',
+              //   ),
+              // ),
             ),
           ),
           Container(
@@ -451,3 +464,4 @@ class MyCalc extends StatelessWidget {
     );
   }
 }
+
